@@ -1,0 +1,32 @@
+import jdk.internal.dynalink.linker.LinkerServices
+
+plugins {
+    id 'java'
+}
+
+group 'ru.netology'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.1'
+    // https://mvnrepository.com/artifact/com.codeborne/selenide
+    testImplementation group: 'com.codeborne', name: 'selenide', version: '5.10.0'
+    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    testImplementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+}
+
+test{
+    useJUnitPlatform()
+    systemProperty('selenide.headless', System.getProperty('selenide.headless'))
+
+}
